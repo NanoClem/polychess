@@ -1,0 +1,12 @@
+1. Mettre la position de depart : 
+board = Board()
+
+2. Si la position est dans Polyglot, regarder les coups proposés avec les pondérations,
+   puis jouer le coup. Même chose pour Blanc et Noir
+
+3. Si la position n'est plus dans Polyglot, rechercher le meilleur coup avec Min Max (UCI),
+   jouer le coup
+
+4. Continuer tant qu'il n'y a pas de condition d'arrêt (echec et mat, nulle)
+
+5. Sauvegarder la partie en format PGN
