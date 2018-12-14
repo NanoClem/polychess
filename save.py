@@ -9,12 +9,31 @@ import chess
 import chess.pgn
 
 class Save:
+    """
+    Cette classe permet la sauvegarde des parties
+    sous format PGN et aussi l'ecriture dans un fichier txt
+    """
+    
+    
+
     def __init__(self, board):
-        self.game=chess.pgn.Game()
-        self.board=board
+        """
+        Constructeur
+        :param board: tableau contenant la partie en cours
+        """
+        self.game  = chess.pgn.Game()
+        self.board = board
+    
+    
     
     def get_headers(self):
+        """
+        Retourne les headers de la partie
+        :return: liste des headers de la partie
+        """
         return self.game.headers
+    
+    
     
     def fill_headers(self, values=[None,None,None,None,None,None,None]) :
         '''
