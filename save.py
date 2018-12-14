@@ -47,7 +47,15 @@ class Save:
                 self.get_headers()[header] = values[i]
             i=i+1
 
-
+    def save_the_game(self):
+        '''
+            La fonction enregistre une partie sous format pgn dans un fichier texte
+            :param: game
+        '''
+        new_pgn=open("games_saved.txt","w",encoding="utf-8")
+        exporter=chess.pgn.FileExporter(new_pgn)
+        self.game.accept(exporter)
+        
 
 
 
@@ -60,6 +68,7 @@ class Save:
 board=chess.Board()
 jeu=Save(board)
 print("Type du header :", type(jeu.get_headers()))
-jeu.fill_headers()
+jeu.fill_headers(["Tournoi test",None,None,None,None,None,None])
 #print(jeu.get_headers())
 print(jeu.game)
+jeu.save_the_game()
