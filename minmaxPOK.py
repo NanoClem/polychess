@@ -62,13 +62,16 @@ class Node:
     
     def minmax(self, maximizingPlayer):
         Node.cpt1+=1
+        
         if self.is_leaf():
             return self.content
+        
         if maximizingPlayer:
             value=-math.inf
             for i in range(len(self.get_children())):
                 value=max(value,float(self.get_children()[i].minmax( False)))
             return value
+        
         else:
             value=math.inf
             for i in range(len(self.get_children())):
@@ -78,16 +81,21 @@ class Node:
     
     def minmaxAB(self, A, B, maximizingPlayer):
         Node.cpt2+=1
+        
         if self.is_leaf():
             return self.content
         Alpha=A
+        print("A",Alpha)
         Beta=B
+        print("B",Beta)
+        
         if maximizingPlayer:
             for i in range(len(self.get_children())):
                 Alpha=max(Alpha,float(self.get_children()[i].minmaxAB(Alpha, Beta, False)))
                 if Alpha>=Beta:
                     return Beta
             return Alpha
+        
         else:
             for i in range(len(self.get_children())):
                 Beta=min(Beta,float(self.get_children()[i].minmaxAB(Alpha, Beta, True)))
@@ -118,5 +126,5 @@ if __name__=="__main__" :
     n1=Node('',[n4,n5,n6])
     n0=Node('',[n1,n2,n3])
     
-    print("minmax", n0.minmax(True), "cpt=", Node.cpt1)
-    print("minmaxAB", n0.minmaxAB(-math.inf, math.inf, True), "cpt=", Node.cpt2)
+    print("minmax", n0.minmax(False), "cpt=", Node.cpt1)
+    print("minmaxAB", n0.minmaxAB(-math.inf, math.inf, False), "cpt=", Node.cpt2)
