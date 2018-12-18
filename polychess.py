@@ -49,6 +49,9 @@ for move in moves:
     #number of black moves
     print("Black moves:" + str(board.legal_moves.count()))
     
+    #fen representation
+    print(board.fen())
+    
     #undo the move
     #board.pop()
     
