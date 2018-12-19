@@ -14,6 +14,8 @@ class Save:
     Cette classe permet la sauvegarde dans un fichier txt :
         - des parties sous format PGN
         - des postions du tableau sous format FEN
+        
+    Elle permet egalement de produire un board depuis une FEN enregistree dans un fichier
     """
     
     
@@ -26,7 +28,25 @@ class Save:
         self.game  = chess.pgn.Game()   #partie sous format PGN
         self.fen   = board.fen()        #positions du tableau sous format FEN
         self.board = board
+        
+        
+        
+    def setBoard(self, new_board) :
+        """
+        Setter du tableau de jeu
+        :param new_board: nouveau tableau de jeu
+        """
+        self.board = new_board
+        
+        
     
+    def setFEN(self, new_fen) :
+        """
+        Setter de FEN
+        :param new_fen: nouveau FEN
+        """
+        self.fen = new_fen
+        
     
     
     def getHeaders(self):
@@ -61,33 +81,44 @@ class Save:
 
 
 
-    def save_the_game(self):
+    def save_the_game(self, filename):
         '''
         La fonction enregistre une partie sous format pgn dans un fichier texte
         :param: game
         '''
-        new_pgn  = open("games_saved.txt","w",encoding="utf-8")
+        new_pgn  = open(filename,"w",encoding="utf-8")
         exporter = chess.pgn.FileExporter(new_pgn)
         self.game.accept(exporter)
         new_pgn.close()
         
         
         
-    def save_fen(self) :
+    def save_fen(self, filename) :
         """
         Enregistre dans un fichier les positions 
         courrante du tableau sous format FEN \n
         Les positions seront alignées
         """
-        filename = "fen_save.txt"
-        fen_file = open(filename, "a")      # ouverture du fichier en mode "append"
-        fen_file.write(self.fen + "\n")     # ecriture du FEN courrant dans le fichier txt
-        fen_file.close()                    # fermeture du fichier txt
+        with open(filename, "a") as f :      # ouverture du fichier en mode "append"
+            f.write(self.fen + "\n")         # ecriture du FEN courrant dans le fichier txt
+            
+    
+    
+    def read_fen(self, filename) :
+        """
+        Recupere la derniere FEN de la partie depuis le fichier de sauvegare 
+        et retourne le tableau correspondant
+        :param filename: nom du fichier de sauvegarde
+        :return: tableau de jeu correspondant
+        """
+        fen = ""
+        with open(filename, "r") as f :
+            for line in f :
+                fen = line
+                
+        return chess.Board(fen)
+                
         
-        
-
-
-
 
 
 # =============================================================================
@@ -95,6 +126,8 @@ class Save:
 # =============================================================================
 if __name__ == "__main__" :
     
+    fen_file  = "fen_save.txt"
+    game_file = "games_saved.txt"
     board = chess.Board()
     jeu = Save(board)
     jeu.fill_headers(["Tournoi test",None,None,None,None,None,None])
@@ -104,8 +137,9 @@ if __name__ == "__main__" :
     print("Affichage des positions FEN :")
     print(jeu.getFEN())
     
-    jeu.save_the_game()
-    jeu.save_fen()
+    jeu.save_the_game(game_file)
+    jeu.save_fen(fen_file)
+    print(jeu.read_fen(fen_file))
     
     
     

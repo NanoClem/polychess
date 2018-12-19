@@ -44,6 +44,7 @@ for move in moves:
     
     #display the board
     print(board)
+    board
     
     
     #number of black moves
@@ -51,6 +52,7 @@ for move in moves:
     
     #fen representation
     print(board.fen())
+    print("En passant :", board.ep_square)
     
     #undo the move
     #board.pop()
