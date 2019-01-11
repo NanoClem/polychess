@@ -1,0 +1,10 @@
+[Event "IA vs IA"]
+[Site ""]
+[Date "2019-01-11 10:17:50.568245"]
+[Round ""]
+[White ""]
+[Black ""]
+[Result "1/2-1/2"]
+
+1/2-1/2
+
