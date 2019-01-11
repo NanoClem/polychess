@@ -43,7 +43,7 @@ You just have to use the provided executable
 
 ## How to play
 - Choose the gamemode : IAvsIA (type 1), PvP (type 2), IAvsP (type 3)
-- To play, you have to type in FEN style in the command prompt
+- To play, you have to type in UCI norm style in the command prompt
 - The game's datas are saved in PGN format in a file at the end 
 
 ### Example
