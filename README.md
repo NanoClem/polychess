@@ -33,9 +33,12 @@ Polychess is able to :
 
 ## DevTeam
 
-Project Manager : Clement DECOOPMAN.
-Developpers     : Chiheb NASRI, Juliette DUPOUY, Mohamed COUIBALY.
+- Project Manager : Clement DECOOPMAN
+- Developpers     : Chiheb NASRI, Juliette DUPOUY, Mohamed COUIBALY
 
 
 ## How to use it
+You just have to use the provided executable
 
+
+## How to play
