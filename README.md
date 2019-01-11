@@ -38,12 +38,13 @@ Polychess is able to :
 
 
 ## How to use it
-You just have to use the provided executable
+You have to ensure that Python is installed on your computer with the python-chess library.
+Go to the "Play" folder and type in command prompt "python main.py"
 
 
 ## How to play
 - Choose the gamemode : IAvsIA (type 1), PvP (type 2), IAvsP (type 3)
-- To play, you have to type in UCI norm style in the command prompt
+- To play, you have to type in FEN norm style in the command prompt
 - The game's datas are saved in PGN format in a file at the end 
 
 ### Example
